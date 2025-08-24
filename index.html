@@ -1,0 +1,713 @@
+<html lang="en">
+  <head>
+    <title>QR Studio</title>
+    <link rel="stylesheet" href="styles.css?" />
+    <!-- <link href="assets/css/brands.css" rel="stylesheet" /> -->
+    <!-- <link href="assets/css/solid.css" rel="stylesheet" /> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <script type="module" src="app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/ba9b5ccf25.js" crossorigin="anonymous"></script>
+  </head>
+  <body tabindex="0">
+    <div id="content">
+      <div class="inner">
+        <h1 style="margin: 1em 0 1em 0;"><span id="qr-title">QR</span> Studio</h1>
+        <!-- <h2>Data</h2> -->
+        <ul id="config-cards" class="cards v">
+          <ul class="cards h">
+            <li class="card">
+              <h3><i class="fa-solid fa-square-binary"></i>Encoding Mode</h3>
+              <ul id="encoding-modes" class="buttons h">
+                <!-- <li><button value="numeric"><i class="fa-solid fa-square-root-variable"></i>Numeric</button></li> -->
+                <li><button value="alphanumeric"><i class="fa-solid fa-font"></i>Alphanumeric</button></li>
+                <li><button value="byte"><i class="fa-solid fa-square-binary"></i>Byte</button></li>
+                <!-- <li><button value="kanji"><i class="fa-solid fa-language"></i>Kanji</button></li>
+                <li><button value="eci"><i class="fa-solid fa-circle"></i>ECI</button></li> -->
+              </ul>
+            </li>
+            <li class="card">
+              <h3><i class="fa-solid fa-bug"></i>Error Correction</h3>
+              <ul id="correction-levels" class="buttons h">
+                <li><button value="l"><i class="fa-solid fa-angle-down"></i>Low (7%)</button></li>
+                <li><button value="m"><i class="fa-solid fa-minus"></i>Medium (15%)</button></li>
+                <li><button value="q"><i class="fa-solid fa-angle-up"></i>Quartile (25%)</button></li>
+                <li><button value="h"><i class="fa-solid fa-angles-up"></i>High (30%)</button></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="cards h">
+            <li class="card">
+              <h3><i class="fa-solid fa-file-pen"></i>Data Configuration</h3>
+              <ul id="data-types" class="buttons h" style="margin-bottom: var(--card-padding);">
+                <li><button value="url"><i class="fa-solid fa-link"></i>URL</button></li>
+                <li><button value="email"><i class="fa-solid fa-envelope"></i>Email</button></li>
+                <li><button value="phone"><i class="fa-solid fa-phone"></i>Phone</button></li>
+                <li><button value="contact"><i class="fa-solid fa-image-portrait"></i>Contact</button></li>
+                <!-- <li><button value="sms"><i class="fa-solid fa-message"></i>SMS</button></li>
+                <li><button value="facetime"><i class="fa-solid fa-video"></i>FaceTime</button></li>
+                <li><button value="geo"><i class="fa-solid fa-location-crosshairs"></i>Location</button></li>
+                <li><button value="apple-maps"><i class="fa-solid fa-location-arrow"></i>Apple Maps</button></li>
+                <li><button value="google-maps"><i class="fa-solid fa-location-dot"></i>Google Maps</button></li>
+                <li><button value="event"><i class="fa-solid fa-calendar"></i>Event</button></li>
+                <li><button value="wifi"><i class="fa-solid fa-wifi"></i>WiFi</button></li>
+                <li><button value="google-play"><i class="fa-brands fa-google-play"></i>Google Play</button></li>
+                <li><button value="apple-music"><i class="fa-brands fa-itunes-note"></i>Apple Music</button></li>
+                <li><button value="i-tunes"><i class="fa-brands fa-itunes-note"></i>iTunes</button></li>
+                <li><button value="i-books"><i class="fa-solid fa-book"></i>iBooks</button></li>
+                <li><button value="app-store"><i class="fa-brands fa-app-store"></i>App Store</button></li> -->
+              </ul>
+              <!-- URL -->
+              <ul id="url-config" class="settings">
+                <li class="solo">
+                  <label for="url-url">URL</label>
+                  <input type="url" id="url-url">
+                </li>
+              </ul>
+              <!-- EMAIL -->
+              <ul id="email-config" class="settings">
+                <li class="solo">
+                  <label for="email-to">To</label>
+                  <input type="email" id="email-to">
+                </li>
+                <li class="duet">
+                  <label for="email-cc">CC</label>
+                  <input type="email" id="email-cc">
+                </li>
+                <li class="duet">
+                  <label for="email-bcc">BCC</label>
+                  <input type="email" id="email-bcc">
+                </li>
+                <li class="solo">
+                  <label for="email-subject">Subject</label>
+                  <input type="text" id="email-subject">
+                </li>
+                <li class="solo">
+                  <label for="email-body">Body</label>
+                  <textarea id="email-body" rows="3"></textarea>
+                </li>
+              </ul>
+              <!-- PHONE -->
+              <ul id="phone-config" class="settings">
+                <li class="solo">
+                  <label for="phone-number">Number</label>
+                  <input type="tel" id="phone-number">
+                </li>
+              </ul>
+              <!-- CONTACT -->
+              <ul id="contact-config" class="settings">
+                <li class="duet">
+                  <label for="contact-name-given">Given name</label>
+                  <input type="text" id="contact-name-given">
+                </li>
+                <!-- <li class="duet">
+                  <label for="contact-sound-given">Given name pronunciation</label>
+                  <input type="text" id="contact-sound-given">
+                </li> -->
+                <li class="duet">
+                  <label for="contact-name-family">Family name</label>
+                  <input type="text" id="contact-name-family">
+                </li>
+                <!-- <li class="duet">
+                  <label for="contact-sound-family">Family name pronunciation</label>
+                  <input type="text" id="contact-sound-family">
+                </li> -->
+                <li class="duet">
+                  <label for="contact-tel">Phone number</label>
+                  <input type="tel" id="contact-tel">
+                </li>
+                <!-- <li class="duet">
+                  <label for="contact-tel-av">Videophone number</label>
+                  <input type="tel" id="contact-tel-av">
+                </li> -->
+                <li class="duet">
+                  <label for="contact-email">Email</label>
+                  <input type="email" id="contact-email">
+                </li>
+                <li class="duet">
+                  <label for="contact-bday">Birthday</label>
+                  <input type="date" id="contact-bday">
+                </li>
+                <li class="duet">
+                  <label for="contact-adr">Address</label>
+                  <input type="text" id="contact-adr">
+                </li>
+                <li class="duet">
+                  <label for="contact-url">URL</label>
+                  <input type="url" id="contact-url">
+                </li>
+                <li class="duet">
+                  <label for="contact-nickname">Nickname</label>
+                  <input type="text" id="contact-nickname">
+                </li>
+                <li class="solo">
+                  <label for="contact-note">Note</label>
+                  <textarea id="contact-note" rows="2"></textarea>
+                </li>
+              </ul>
+              <!-- SMS -->
+              <ul id="sms-config" class="settings">
+                <li class="solo">
+                  <label for="sms-number">Number</label>
+                  <input type="tel" id="sms-number" pattern="[0-9]{1}([0-9]{3})[0-9]{3}-[0-9]{4}" placeholder="+1(234)567-8910">
+                </li>
+                <li class="solo">
+                  <label for="sms-message">Message</label>
+                  <textarea id="sms-message" rows="2"></textarea>
+                </li>
+              </ul>
+              <!-- FACETIME -->
+              <ul id="facetime-config" class="settings">
+                <li class="duet">
+                  <label for="facetime-type">Type</label>
+                  <select id="facetime-type">
+                    <option value="facetime">Video</option>
+                    <option value="facetime-audio">Audio</option>
+                  </select>
+                </li>
+                <li class="duet">
+                  <label for="facetime-target">Target</label>
+                  <select id="facetime-target">
+                    <option value="number">Number</option>
+                    <option value="email">Email</option>
+                  </select>
+                </li>
+                <li class="solo">
+                  <label for="facetime-number">Number</label>
+                  <input type="tel" id="facetime-number" pattern="[0-9]{1}([0-9]{3})[0-9]{3}-[0-9]{4}" placeholder="+1(234)567-8910">
+                </li>
+                <li class="solo">
+                  <label for="facetime-email">Email</label>
+                  <input type="email" id="facetime-email">
+                </li>
+              </ul>
+              <!-- LOCATION -->
+              <ul id="geo-config" class="settings">
+                <li class=""
+                <input type="number" id="geo-latitude">
+                <input type="number" id="geo-longitude">
+                <input type="number" id="geo-height">
+              </ul>
+              <!-- EVENT -->
+              <ul id="event-config" class="settings">
+                <input type="text" id="event-summary">
+                <input type="datetime" id="event-dtstart">
+                <input type="datetime" id="event-dtend">
+                <input type="number" id="event-latitude">
+                <input type="number" id="event-longitude">
+              </ul>
+              <!-- WIFI -->
+              <ul id="wifi-config" class="settings">
+                <li class="solo">
+                  <label for="wifi-s">SSID</label>
+                  <input type="text" id="wifi-s">
+                </li>
+                <li class="solo">
+                  <label for="wifi-h">Hidden SSID?</label>
+                  <input type="checkbox" id="wifi-h" value="false">
+                </li>
+                <li class="duet">
+                  <label for="wifi-t">Authentication Type</label>
+                  <select id="wifi-t">
+                    <option value="WEP">WEP</option>
+                    <option value="WPA">WPA</option>
+                    <option value="WPA2-EAP">WPA2-EAP</option>
+                    <option value="nopass">None</option>
+                  </select>
+                </li>
+                <li class="duet">
+                  <label for="wifi-p">Password</label>
+                  <input type="text" id="wifi-p">
+                </li>
+                <li class="duet">
+                  <label for="wifi-i">Identity</label>
+                  <input type="text" id="wifi-i">
+                </li>
+                <li class="duet">
+                  <label for="wifi-a">Anonymous Identity</label>
+                  <input type="text" id="wifi-a">
+                </li>
+                <li class="duet">
+                  <label for="wifi-e">EAP Method</label>
+                  <select id="wifi-e">
+                    <option value="TTLS">TTLS</option>
+                    <option value="PWD">PWD</option>
+                  </select>
+                </li>
+                <li class="duet">
+                  <label for="wifi-ph2">Phase 2 Method</label>
+                  <select id="wifi-ph2">
+                    <option value="MSCHAPV2">MSCHAPV2</option>
+                  </select>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </ul>
+        <ul id="style-cards" class="cards h">
+          <ul class="cards v">
+            <li class="card">
+              <h3><i class="fa-solid fa-qrcode"></i>Grid</h3>
+              <ul class="settings">
+                <li class="duet">
+                  <ul class="settings" id="grid-foreground-colour-settings">
+                    <li class="solo">
+                      <label for="grid-foreground-gradient-type">Foreground</label>
+                      <select id="grid-foreground-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="grid-foreground-colours" initial="#000000"></ul>
+                      <button id="grid-foreground-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i> Add FG colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="grid-foreground-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="grid-foreground-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="grid-foreground-gradient-angle">FG angle</label>
+                      <input type="range" id="grid-foreground-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+                <li class="duet">
+                  <ul class="settings" id="grid-background-colour-settings">
+                    <li class="solo">
+                      <label for="grid-background-gradient-type">Background</label>
+                      <select id="grid-background-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="grid-background-colours" initial="#ffffff"></ul>
+                      <button id="grid-background-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i> Add BG colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="grid-background-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="grid-background-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="grid-background-gradient-angle">BG angle</label>
+                      <input type="range" id="grid-background-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+                <li class="duet">
+                  <label for="dot-radius">Dot radius</label>
+                  <input type="range" id="dot-radius" min="0" max="50" step="1" value="0" unit="%">
+                </li>
+                <li class="duet">
+                  <label for="dot-padding">Dot padding</label>
+                  <input type="range" id="dot-padding" min="0" max="25" step="0.5" value="0" unit="%">
+                </li>
+                <li class="solo">
+                  <label for="connect-dots">Connect dots?</label>
+                  <input type="checkbox" id="connect-dots">
+                </li>
+              </ul>
+            </li>
+            <li class="card">
+              <h3><i class="fa-solid fa-bullseye"></i>Eyes</h3>
+              <ul class="settings">
+                <li class="solo">
+                  <label for="eyes-inherit-grid-colours">Inherit grid colours?</label>
+                  <input type="checkbox" id="eyes-inherit-grid-colours" checked>
+                </li>
+              </ul>
+              <ul class="settings" id="eyes-colour-settings">
+                <li class="duet">
+                  <ul class="settings" id="eyes-inner-colour-settings">
+                    <li class="solo">
+                      <label for="eyes-outer-gradient-type">Outer</label>
+                      <select id="eyes-outer-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="eyes-outer-colours" initial="#000000"></ul>
+                      <button id="eyes-outer-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i>Add outer colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="eyes-outer-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="eyes-outer-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="eyes-outer-gradient-angle">Outer angle</label>
+                      <input type="range" id="eyes-outer-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+                <li class="duet">
+                  <ul class="settings" id="eyes-inner-colour-settings">
+                    <li class="solo">
+                      <label for="eyes-inner-gradient-type">Inner</label>
+                      <select id="eyes-inner-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="eyes-inner-colours" initial="#000000"></ul>
+                      <button id="eyes-inner-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i>Add inner colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="eyes-inner-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="eyes-inner-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="eyes-inner-gradient-angle">Inner angle</label>
+                      <input type="range" id="eyes-inner-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="card">
+              <h3><i class="fa-solid fa-shapes"></i>Icon</h3>
+              <ul class="settings">
+                <li class="duet">
+                  <label for="icon-pack">Icon pack</label>
+                  <select id="icon-pack">
+                    <option value="solid">Solid</option>
+                    <option value="regular">Regular</option>
+                    <option value="brands">Brands</option>
+                  </select>
+                </li>
+                <li class="duet">
+                  <label for="icon-name"><a href="https://fontawesome.com/search?ic=free&o=r" target="_blank">Icon name</a></label>
+                  <!-- <input type="text" id="icon-name"> -->
+                  <input id="icon-name" list="icon-list">
+                  <datalist id="icon-list"></datalist>
+                </li>
+                <li class="solo">
+                  <label for="icon-inherit-grid-colours">Inherit grid colours?</label>
+                  <input type="checkbox" id="icon-inherit-grid-colours" checked>
+                </li>
+              </ul>
+              <ul class="settings" id="icon-colour-settings">
+                <li class="duet">
+                  <ul class="settings" id="icon-fill-colour-settings">
+                    <li class="solo">
+                      <label for="icon-fill-gradient-type">Fill</label>
+                      <select id="icon-fill-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="icon-fill-colours" initial="#000000"></ul>
+                      <button id="icon-fill-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i>Add fill colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="icon-fill-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="icon-fill-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="icon-fill-gradient-angle">Fill angle</label>
+                      <input type="range" id="icon-fill-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+                <li class="duet">
+                  <ul class="settings" id="icon-stroke-colour-settings">
+                    <li class="solo">
+                      <label for="icon-stroke-gradient-type">Stroke</label>
+                      <select id="icon-stroke-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="icon-stroke-colours" initial="#000000"></ul>
+                      <button id="icon-stroke-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i>Add stroke colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="icon-stroke-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="icon-stroke-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="icon-stroke-gradient-angle">Stroke angle</label>
+                      <input type="range" id="icon-stroke-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <ul class="settings">
+                <li class="solo">
+                  <label for="icon-stroke-thickness">Stroke thickness</label>
+                  <input type="range" id="icon-stroke-thickness" min="0" max="50" step="1" value="0" unit="%">
+                </li>
+                <li class="duet">
+                  <label for="icon-size">Icon size</label>
+                  <input type="range" id="icon-size" min="0" max="100" step="1" value="50" unit="%">
+                </li>
+                <li class="duet">
+                  <label for="icon-area">Area size</label>
+                  <input type="range" id="icon-area" min="3" max="3" step="2" value="3" unit="">
+                </li>
+              </ul>
+            </li>
+            <li class="card">
+              <h3><i class="fa-solid fa-crop-simple"></i>Frame</h3>
+              <ul class="settings">
+                <li class="solo">
+                  <ul class="settings" id="frame-colour-settings">
+                    <li class="solo">
+                      <label for="frame-gradient-type">Colour</label>
+                      <select id="frame-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="frame-colours" initial="#000000"></ul>
+                      <button id="frame-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i>Add colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="frame-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="frame-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="frame-gradient-angle">Gradient angle</label>
+                      <input type="range" id="frame-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+                <li class="solo">
+                  <label for="frame-thickness">Thickness</label>
+                  <input type="range" id="frame-thickness" min="0" max="25" step="0.5" value="0" unit="%">
+                </li>
+                <li class="solo">
+                  <label for="frame-radius">Corner radius</label>
+                  <input type="range" id="frame-radius" min="0" max="25" step="0.5" value="0" unit="%">
+                </li>
+              </ul>
+            </li>
+            <li class="card">
+              <h3><i class="fa-solid fa-tag"></i>Label</h3>
+              <ul class="settings">
+                <li class="solo">
+                  <label for="label-text">Text</label>
+                  <input type="text" id="label-text">
+                </li>
+                <li class="duet">
+                  <label for="label-font-family"><a href="https://fonts.google.com" target="_blank">Font family</a></label>
+                   <input id="label-font-family" list="font-families" value="Ubuntu">
+                   <datalist id="font-families"></datalist>
+                </li>
+                <li class="duet">
+                  <label for="label-font-style">Font style</label>
+                  <select id="label-font-style">
+                    <option value="normal">Roman</option>
+                    <option value="italic">Italic</option>
+                    <option value="oblique">Oblique</option>
+                  </select>
+                </li>
+                <li class="duet">
+                  <label for="label-font-size">Font size</label>
+                  <input type="range" id="label-font-size" min="5" max="25" step="0.5" value="10" unit="%">
+                </li>
+                <li class="duet">
+                  <label for="label-font-weight">Font weight</label>
+                  <input type="range" id="label-font-weight" min="0" max="1000" step="100" value="400" unit="">
+                </li>
+                <li class="solo">
+                  <label for="label-leading">Leading</label>
+                  <input type="range" id="label-leading" min="0.75" max="2" step="0.05" value="1.3" unit="">
+                </li>
+                <li class="duet">
+                  <label for="label-vertical-padding">Vertical padding</label>
+                  <input type="range" id="label-vertical-padding" min="0" max="20" step="0.5" value="5" unit="%">
+                </li>
+                <li class="duet">
+                  <label for="label-horizontal-padding">Horizontal padding</label>
+                  <input type="range" id="label-horizontal-padding" min="0" max="20" step="0.5" value="5" unit="%">
+                </li>
+                <li class="duet">
+                  <ul class="settings" id="label-fill-colour-settings">
+                    <li class="solo">
+                      <label for="label-fill-gradient-type">Fill</label>
+                      <select id="label-fill-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="label-fill-colours" initial="#000000"></ul>
+                      <button id="label-fill-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i>Add fill colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="label-fill-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="label-fill-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="label-fill-gradient-angle">Fill angle</label>
+                      <input type="range" id="label-fill-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+                <li class="duet">
+                  <ul class="settings" id="label-stroke-colour-settings">
+                    <li class="solo">  
+                      <label for="label-stroke-gradient-type">Stroke</label>
+                      <select id="label-stroke-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="label-stroke-colours" initial="#000000"></ul>
+                      <button id="label-stroke-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i>Add stroke colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="label-stroke-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="label-stroke-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="label-stroke-gradient-angle">Stroke angle</label>
+                      <input type="range" id="label-stroke-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+                <li class="solo">
+                  <label for="label-stroke-thickness">Stroke thickness</label>
+                  <input type="range" id="label-stroke-thickness" min="0" max="50" step="1" value="0" unit="%">
+                </li>
+                <li class="duet">
+                  <ul class="settings" id="label-background-colour-settings">
+                    <li class="solo">
+                      <label for="label-background-gradient-type">Background</label>
+                      <select id="label-background-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="label-background-colours" initial="#ffffff"></ul>
+                      <button id="label-background-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i>Add BG colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="label-background-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="label-background-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="label-background-gradient-angle">BG angle</label>
+                      <input type="range" id="label-background-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+                <li class="duet">
+                  <ul class="settings" id="label-border-colour-settings">
+                    <li class="solo">
+                      <label for="label-border-gradient-type">Border</label>
+                      <select id="label-border-gradient-type">
+                        <option value="single">Single colour</option>
+                        <option value="linear">Linear gradient</option>
+                        <option value="radial">Radial gradient</option>
+                        <option value="conic">Conic gradient</option>
+                      </select>
+                      <ul id="label-border-colours" initial="#000000"></ul>
+                      <button id="label-border-gradient-add" class="for-grad linear radial conic"><i class="fa-solid fa-plus"></i>Add border colour</button>
+                    </li>
+                    <li class="solo for-grad linear radial conic">
+                      <label for="label-border-gradient-spacing">Space colours evenly?</label>
+                      <input type="checkbox" id="label-border-gradient-spacing" checked>
+                    </li>
+                    <li class="solo for-grad linear conic">
+                      <label for="label-border-gradient-angle">Border gradient angle</label>
+                      <input type="range" id="label-border-gradient-angle" min="-180" max="180" step="5" value="0" unit="°">
+                    </li>
+                  </ul>
+                </li>
+                <li class="solo">
+                  <label for="label-border-thickness">Border thickness</label>
+                  <input type="range" id="label-border-thickness" min="0" max="25" step="0.5" value="0" unit="%">
+                </li>
+                <li class="solo">
+                  <label for="label-radius">Corner radius</label>
+                  <input type="range" id="label-radius" min="0" max="25" step="0.5" value="0" unit="%">
+                </li>
+                <li class="duet">
+                  <label for="label-position">Position</label>
+                  <select id="label-position">
+                    <option value="below">Below</option>
+                    <option value="above">Above</option>
+                  </select>
+                </li>
+                <li class="duet">
+                  <label for="label-connection">Frame connection</label>
+                  <select id="label-connection">
+                    <option value="disconnected">Disconnected</option>
+                    <option value="separator">Separator</option>
+                    <option value="flat">Flat</option>
+                    <option value="continuous">Continuous</option>
+                  </select>
+                </li>
+                <li class="solo">
+                  <label for="label-gap">Distance from frame</label>
+                  <input type="range" id="label-gap" min="0" max="25" step="0.5" value="0" unit="%">
+                </li>
+              </ul>
+            </li>
+          </ul>
+          <ul id="preview" class="cards v">
+            <li>
+              <div id="canvas-container">
+                <canvas id="qr-canvas">Sorry, your browser does not support canvas.</canvas>
+                <canvas id="icon-stroke-canvas"></canvas>
+                <canvas id="icon-fill-canvas"></canvas>
+                <canvas id="text-stroke-canvas"></canvas>
+                <canvas id="text-fill-canvas"></canvas>
+              </div>
+            </li>
+            <li class="card always-visible">
+              <h3><i class="fa-solid fa-info-circle"></i>Info</h3>
+              <ul class="chips v">
+                <li>
+                  <div><i class="fa-solid fa-maximize"></i>Version</div>
+                  <div id="info-version"></div>
+                </li>
+                <li>
+                  <div><i class="fa-solid fa-mask"></i>Mask</div>
+                  <div id="info-mask"></div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </ul>
+        <ul class="cards v">
+          <li class="card">
+            <h3><i class="fa-solid fa-save"></i>Save/Load</h3>
+            <ul class="settings">
+              <li class="solo">
+                <label for="file-format">File format</label>
+                <select id="file-format">
+                  <option value="png">PNG</option>
+                  <option value="jpg">JPG</option>
+                </select>
+              </li>
+              <li class="solo">
+                <label for="file-width">File width (256 px)</label>
+                <input type="range" id="file-width" min="15" max="30" step="1" value="15">
+              </li>
+              <li class="solo">
+                <ul class="buttons h">
+                  <li><button id="save-image"><i class="fa-solid fa-image"></i>Download QR Code</button></li>
+                  <li><button id="export-settings"><i class="fa-solid fa-download"></i>Export configuration</button></li>
+                  <li><button id="import-settings"><i class="fa-solid fa-upload"></i>Import configuration</button></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <canvas id="qr-output"></canvas>
+  </body>
+</html>
