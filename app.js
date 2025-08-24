@@ -986,7 +986,8 @@ function drawQR() {
   }
 
   // SETTINGS
-  const canvasWidth = document.getElementById('file-width').value * (qrSize + 8) * (1 + 2 * document.getElementById('frame-thickness').value / 100);
+  const canvasWidth = document.getElementById('image-dot-size').value * (qrSize + 8) * (1 + 2 * document.getElementById('frame-thickness').value / 100);
+  document.querySelector('[for="image-dot-size"]').innerHTML = `Dot size (${qrSize != null ? canvasWidth : 0}px total)`;
 
   qrCanvas.setAttribute('width', canvasWidth);
   qrCanvas.setAttribute('height', canvasWidth); // temp, just to get font measurements
